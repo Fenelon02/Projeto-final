@@ -145,10 +145,10 @@ print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_persona
 tempo_de_pausa(1)
 personagem_fase_1()
 
-print(azul(),'Legal né? Bem, a segunda fase é um questionário de python')
+print(azul(),'Legal né? Bem, a segunda fase é um jogo da velha!')
 
 tempo_de_pausa(1)
-print(f'Serão 10 perguntas, com resposta em A,B,C,D')
+# print(f'Serão 10 perguntas, com resposta em A,B,C,D')
 
 tempo_de_pausa(1)
 print('Mas antes,me alimente por favor, estou com fome!')
@@ -159,7 +159,8 @@ from comidas import comidas_a_comprar
 
 comidas_a_comprar(saldo)
 print(apaga())
-
+from jogo_2 import *
+jogo_2()
 
 
 
