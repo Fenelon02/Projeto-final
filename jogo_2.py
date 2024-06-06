@@ -80,6 +80,7 @@ def jogo_2():
         # ESTRUTURA DO JOGOs    
         
         contador_jogadas=0
+        jogador_vencedor=0
 
         lista_1_horizontal=[]
         lista_2_horizontal=[]
@@ -94,21 +95,8 @@ def jogo_2():
 
         jogo=['a','a','a','a','a','a','a','a','a']
 
-        while contador_jogadas<=9:
-
-
-            if contador_jogadas==9:
-                print("\n   |   |   ")
-                print(" " + jogo[0] + " | " + jogo[1] + " | " + jogo[2] + " ")
-                print("___|___|___")
-                print("   |   |   ")
-                print(" " + jogo[3] + " | " + jogo[4] + " | " + jogo[5] + " ")
-                print("___|___|___")
-                print("   |   |   ")
-                print(" " + jogo[6] + " | " + jogo[7] + " | " + jogo[8] + " ")
-                print("   |   |   \n")
-                break
-                 
+        while jogador_vencedor!=5:
+            
 
 
             print("\n   |   |   ")
@@ -121,6 +109,18 @@ def jogo_2():
             print(" " + jogo[6] + " | " + jogo[7] + " | " + jogo[8] + " ")
             print("   |   |   \n")
 
+
+            jogo_da_velha_mostruário = [
+            "  1 | 2 |  3 ",
+            " ___|___|___ ",
+            "  4 | 5 | 6  ",
+            " ___|___|___ ",
+            "  7 | 8 | 9  ",
+            "    |   |    "
+            ]
+
+            for linha in jogo_da_velha_mostruário:
+                print(azul(),linha,apaga())
 
 
             # JOGADA DA PESSOA
@@ -136,36 +136,361 @@ def jogo_2():
 
             # JOGADA DO COMPUTADOR
             else:   
-                escolha_local = randint(1, 9)
-                while jogo[escolha_local-1] != 'a':
+                escolha_local=randint(1, 9)
+
+                while jogo[escolha_local-1]!='a':
                     escolha_local = randint(1, 9)
+
                 print(f'Computador jogou na posição {escolha_local}')
-                jogo[escolha_local-1] = escolha_por_pc
+                jogo[escolha_local-1]=escolha_por_pc
 
 
-            if escolha_local==1 or escolha_local==2 or escolha_local==3:
-                lista_1_horizontal.append(jogo[escolha_local-1])
-            
-            if escolha_local==4 or escolha_local==5 or escolha_local==6:
-                lista_2_horizontal.append(jogo[escolha_local-1])
-            
 
-            if escolha_local==7 or escolha_local==8 or escolha_local==9:
-                lista_3_horizontal.append(jogo[escolha_local-1])
+            # ORGANIZAÇÃO DOS DADOS
 
-            if escolha_local==1 or escolha_local==4 or escolha_local==7:
-                lista_1_vertical.append(jogo[escolha_local-1])
+            if escolha_local in [1, 2, 3]:
+                lista_1_horizontal.append(jogo[escolha_local - 1])
+            if escolha_local in [4, 5, 6]:
+                lista_2_horizontal.append(jogo[escolha_local - 1])
+            if escolha_local in [7, 8, 9]:
+                lista_3_horizontal.append(jogo[escolha_local - 1])
+            if escolha_local in [1, 4, 7]:
+                lista_1_vertical.append(jogo[escolha_local - 1])
+            if escolha_local in [2, 5, 8]:
+                lista_2_vertical.append(jogo[escolha_local - 1])
+            if escolha_local in [3, 6, 9]:
+                lista_3_vertical.append(jogo[escolha_local - 1])
+            if escolha_local in [1, 5, 9]:
+                lista_1_diagonal.append(jogo[escolha_local - 1])
+            if escolha_local in [3, 5, 7]:
+                lista_2_diagonal.append(jogo[escolha_local - 1])
 
-            if escolha_local==2 or escolha_local==5 or escolha_local==8:
-                lista_2_vertical.append(jogo[escolha_local-1])
-            
-            if escolha_local==3 or escolha_local==6 or escolha_local==9:
-                 lista_3_vertical.append(jogo[escolha_local-1])
+            # CONFERIR O VENCEDOR
 
+            while True:
+                if len(lista_1_diagonal)==3: 
+
+                    if lista_1_diagonal[0]=='x' and lista_1_diagonal[1]=='x' and lista_1_diagonal[2]=='x':
+                        if escolha_do_jogador in 'Xx':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+
+                    
+                    
+                    elif lista_1_diagonal[0]=='o' and lista_1_diagonal[1]=='o' and lista_1_diagonal[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    else:
+                        break
+
+
+                elif len(lista_2_diagonal)==3:
+                    if lista_2_diagonal[0]=='x' and lista_2_diagonal[1]=='x' and lista_2_diagonal[2]=='x':
+
+                        if escolha_do_jogador in 'Xx':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    
+
+                    elif lista_2_diagonal[0]=='o' and lista_2_diagonal[1]=='o' and lista_2_diagonal[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    else:
+                        break
+
+                elif len(lista_1_horizontal)==3:
+                    if lista_1_horizontal[0]=='x' and lista_1_horizontal[1]=='x' and lista_1_horizontal[2]=='x':
+
+                        if escolha_do_jogador in 'Xx':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    
+
+                    elif lista_1_horizontal[0]=='o' and lista_1_horizontal[1]=='o' and lista_1_horizontal[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    else:
+                        break
+                elif len(lista_2_horizontal)==3:
+                    if lista_2_horizontal[0]=='x' and lista_2_horizontal[1]=='x' and lista_2_horizontal[2]=='x':
+
+                        if escolha_do_jogador in 'Xx':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    
+
+                    elif lista_2_horizontal[0]=='o' and lista_2_horizontal[1]=='o' and lista_2_horizontal[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+
+                    else:
+                        break
+
+                elif len(lista_3_horizontal)==3:
+                    if lista_3_horizontal[0]=='x' and lista_3_horizontal[1]=='x' and lista_3_horizontal[2]=='x':
+
+                        if escolha_do_jogador in 'Xx':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    
+
+                    elif lista_3_horizontal[0]=='o' and lista_3_horizontal[1]=='o' and lista_3_horizontal[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+
+                    else:
+                        break
+                    
+                elif len(lista_1_vertical)==3:
+                    if lista_1_vertical[0]=='x' and lista_1_vertical[1]=='x' and lista_1_vertical[2]=='x':
+
+                        if escolha_do_jogador in 'x':
+                            print('JOGADOR VENCEU')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        else:
+                            print('Máquina venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+                    
+
+                    elif lista_1_vertical[0]=='o' and lista_1_vertical[1]=='o' and lista_1_vertical[2]=='o':
+                        if escolha_do_jogador in 'Oo':
+                            print('Jogador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                        else:
+                            print('Computador venceu')
+                            print('COMEÇANDO UM NOVO JOGO...')
+                            
+
+                        lista_1_horizontal=[]
+                        lista_2_horizontal=[]
+                        lista_3_horizontal=[]
+
+                        lista_1_vertical=[]
+                        lista_2_vertical=[]
+                        lista_3_vertical=[]
+
+                        lista_1_diagonal=[]
+                        lista_2_diagonal=[]
+
+                        jogo=['a','a','a','a','a','a','a','a','a']
+                        break
+
+                    else:
+                        break
+
+
+
+
+                else: 
+                    break
+
+                
+
+                            
 
             contador_jogadas+=1
-            print(f'horizontal 1={lista_1_horizontal}, horizontal 2={lista_2_horizontal}, horizontal 3={lista_3_horizontal}\n vertotal 1={lista_1_vertical}, vertical 2={lista_2_vertical}, vertical 3={lista_3_vertical}')
-            
+            tempo_de_pausa(1)
+
              
 jogo_2()    
 
