@@ -23,5 +23,12 @@ def ciano():
 def marrom():
     return "\033[38;2;139;69;19m"
 
+def vinho():
+    return "\033[38;2;128;0;32m"
+
+def rosa_barbie():
+    return "\033[38;2;252;116;253m"
+
+
 
 

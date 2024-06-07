@@ -5,16 +5,16 @@ from random import randint
 def jogo_2():
         
         # APRESENTAÇÃO DO JOGO
-        jogo_da_velha_mostruário ='''
-          1 | 2 |  3 
-         ___|___|___ 
-          4 | 5 | 6  
-         ___|___|___ 
-          7 | 8 | 9  
-            |   |    
-        '''
+        # jogo_da_velha_mostruário ='''
+        #   1 | 2 |  3 
+        #  ___|___|___ 
+        #   4 | 5 | 6  
+        #  ___|___|___ 
+        #   7 | 8 | 9  
+        #     |   |    
+        # '''
 
-        print(jogo_da_velha_mostruário)
+        # print(jogo_da_velha_mostruário)
 
             
         # APRESENTAÇÃO DAS REGRAS
@@ -29,7 +29,8 @@ def jogo_2():
 
 
         # ESCOLHER O CARACTERE
-        escolha_do_jogador=(input('Qual seu caractere?\n[X]-para "x"\n[O]-Para "O"\n').lower().strip()[0])
+        
+        escolha_do_jogador=(input(vinho()+'Qual seu caractere?\n[X]-para "x"\n[O]-Para "O"\n').lower().strip()[0])
 
         while escolha_do_jogador not in 'xo':
 
@@ -44,7 +45,7 @@ def jogo_2():
         # ESTRUTURA DO JOGO    
         
         contador_jogadas=0
-        jogador_vencedor=0
+        jogador_vencedor=5
 
         lista_1_horizontal=[]
         lista_2_horizontal=[]
@@ -191,7 +192,6 @@ def jogo_2():
                 
         
             tempo_de_pausa(1)
-        print('O JOGO DA VITÓRIA, PARABÉNS CAMPEÃO.')
+            
+        print(apaga()+verde()+'O JOGO DA VITÓRIA, PARABÉNS CAMPEÃO.'+apaga())
 
-             
-jogo_2()    

@@ -13,7 +13,7 @@ print('SEJA BEM VINDO!'.center(40))
 print('=-'*20+apaga())
 
 tempo_de_pausa(1)
-print(vermelho(),'Atualmente, este é o seu personagem!'.center(30),apaga())
+print(vermelho(),'Atualmente, este é o seu personagem, na fase estagiário!'.center(30),apaga())
 tempo_de_pausa(1)
 
 personagem_1()
@@ -43,11 +43,7 @@ print('Neste jogo, seu boneco avança de fase de acordo com suas conquistas\nque
 
 tempo_de_pausa(1.2)
 
-print('DetAlhe importante, seu personagem sente fome!\nÉ possível comprar alimentos para ele.\n')
-
-tempo_de_pausa(1)
-
-print('Cada alimento lhe cede uma porcentagem de energia, quanto mais caro o alimento\nMais energia lhe é cedida\n')
+print('Detalhe importante, seu personagem sente fome!\nÉ possível comprar alimentos para ele.\n')
 
 tempo_de_pausa(1)
 print('Você consegue saldo para comprar alimentos avançando as fases, que lhe aparecerão.\nSendo questionários, jogos, entre outras coisas.\n')
@@ -140,7 +136,7 @@ contador=0
 saldo=50
 print('Você é um campeão! Parabéns por chegar a fase 2!\n')
 
-print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_personagem} camponês!'+apaga())
+print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_personagem} dev iniciante!'+apaga())
 
 tempo_de_pausa(1)
 personagem_fase_1()
@@ -157,12 +153,47 @@ print('Mas antes,me alimente por favor, estou com fome!')
 # COMPRAR COMIDAS
 from comidas import comidas_a_comprar
 
-comidas_a_comprar(saldo)
+tempo_de_pausa(1)
+saldo=comidas_a_comprar(saldo)
 print(apaga())
-from jogo_2 import *
+
+# INÍCIO DA FASE 2
+
+print(magenta()+'Feito isso, vamos a fase 2 do seu jogo!'+apaga())
+tempo_de_pausa(1)
+from jogo_2 import jogo_2
 jogo_2()
 
 
+# FASE 3
+from personagens.personagem_fase_2 import *
+saldo+=100
+print(magenta()+'Após este longa jogada, bem vindo á fase 3!')
+
+print('Esta jornada especial lhe rendeu um saldo de mais 100 moedas!')
+
+tempo_de_pausa(1)
+
+print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_personagem} dev júnior!'+apaga())
+
+personagem_fase_2()
+
+tempo_de_pausa(1)
+print(azul()+'Mas antes de começarmos a fase 3,me alimente por favor, estou com fome!')
+
+
+# COMPRAR COMIDAS
+
+tempo_de_pausa(1)
+saldo=comidas_a_comprar(saldo)
+print(apaga())
+tempo_de_pausa(1)
+
+# INÍCIO OFC DA FASE 3
+
+from jogo_3 import jogo_terceira_fase
+
+jogo_terceira_fase()
 
 
 
