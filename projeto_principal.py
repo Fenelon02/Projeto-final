@@ -196,4 +196,66 @@ from jogo_3 import jogo_terceira_fase
 jogo_terceira_fase()
 
 
+# FASE 4
+saldo+=70
+print(magenta()+'Após testar seus conhecimentos em python na fase 3, bem vindo a fase 4!')
+
+print('Esta jornada lhe rendeu 70 moedas.\n')
+
+tempo_de_pausa(1)
+
+print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_personagem} dev pleno!'+apaga())
+
+from personagens.personagem_fase_3 import *
+
+personagem_fase_3()
+
+# ALIMENTAÇÃO
+tempo_de_pausa(1)
+print(azul()+'Mas antes de começarmos a fase 4,me alimente por favor, estou com fome!')
+
+
+# COMPRAR COMIDAS
+
+tempo_de_pausa(1)
+saldo=comidas_a_comprar(saldo)
+print(apaga())
+tempo_de_pausa(1)
+
+# JOGO 4 EM SI
+
+from jogo_4 import jogo_quarta_fase
+
+jogo_quarta_fase()
+
+# FASE 5
+
+saldo+=110
+print(magenta()+'Após esta jornada matemática,seja-bem-vinda fase 5!\nNossa última fase!')
+
+print('Esta jornada lhe rendeu 110 moedas.\n')
+
+tempo_de_pausa(1)
+
+print(f'Dito isso, você acaba de desbloquear uma nova skin!\nO {nome_do_personagem} dev sênior!'+apaga())
+
+from personagens.personagem_fase_4 import *
+
+personagem_fase_4()
+
+# ALIMENTAÇÃO
+tempo_de_pausa(1)
+print(azul()+'Mas antes de começarmos a fase 4,me alimente por favor, estou com fome!')
+
+
+# COMPRAR COMIDAS
+
+tempo_de_pausa(1)
+saldo=comidas_a_comprar(saldo)
+print(apaga())
+tempo_de_pausa(1)
+
+
+
+
 

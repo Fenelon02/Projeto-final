@@ -29,6 +29,10 @@ def vinho():
 def rosa_barbie():
     return "\033[38;2;252;116;253m"
 
+def fuligem():
+    return "\033[38;2;47;79;79m"
+
+
 
 
 
