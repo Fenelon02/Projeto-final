@@ -32,6 +32,8 @@ def rosa_barbie():
 def fuligem():
     return "\033[38;2;47;79;79m"
 
+def guarana():
+    return "\033[38;2;165;42;42m"
 
 
 
