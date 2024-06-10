@@ -259,6 +259,7 @@ from jogo_5 import *
 
 jogo_quinta_fase()
 
-
+print(fonte_italica()+'Meus sinceros agradecimentos por jogarem até o final.\n')
+print('See you soon...'+apaga_fonte())
 
 

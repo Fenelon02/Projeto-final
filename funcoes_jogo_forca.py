@@ -1,4 +1,7 @@
+# Código desenvolvido em parceria com (@github) Lucas-BRT
+
 from random import randint
+from cores import *
 
 def renderizar_vida_do_jogador(vidas=0):
     estados_de_vida = [
@@ -66,7 +69,7 @@ def renderizar_vida_do_jogador(vidas=0):
         ---------
         """
     ]
-    print(estados_de_vida[vidas])
+    print(ciano()+estados_de_vida[vidas]+apaga())
 
 def renderizar_palavra_secreta(palavra='', letras_permitidas=[]):
     for letra in palavra:

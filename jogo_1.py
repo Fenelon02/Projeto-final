@@ -5,8 +5,6 @@ def jogo_1():
     contador_personagem=0
     while True:
 
-        #lembrar de apagar isto abaixo
-        contador_personagem=5
         if contador_personagem==5:
             print('PARABÉNS! VOCÊ VENCEU')
             break

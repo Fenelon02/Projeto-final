@@ -45,7 +45,7 @@ def jogo_2():
         # ESTRUTURA DO JOGO    
         
         contador_jogadas=0
-        jogador_vencedor=5
+        jogador_vencedor=0
 
         lista_1_horizontal=[]
         lista_2_horizontal=[]

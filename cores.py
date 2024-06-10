@@ -35,6 +35,10 @@ def fuligem():
 def guarana():
     return "\033[38;2;165;42;42m"
 
+def fonte_italica():
+    return "\033[1m"
 
+def apaga_fonte():
+    return "\033[0m"
 
 

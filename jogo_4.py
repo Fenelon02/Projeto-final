@@ -136,7 +136,4 @@ def jogo_quarta_fase():
     
 
     print(verde()+'PARABÉNS! VOCÊ CHEGOU AO FIM DA PENULTIMA FASE!'+apaga())
-     
 
-
-jogo_quarta_fase()
