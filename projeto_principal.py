@@ -245,7 +245,7 @@ personagem_fase_4()
 
 # ALIMENTAÇÃO
 tempo_de_pausa(1)
-print(azul()+'Mas antes de começarmos a fase 4,me alimente por favor, estou com fome!')
+print(azul()+'Mas antes de começarmos a fase 5,me alimente por favor, estou com fome!')
 
 
 # COMPRAR COMIDAS
@@ -255,6 +255,9 @@ saldo=comidas_a_comprar(saldo)
 print(apaga())
 tempo_de_pausa(1)
 
+from jogo_5 import *
+
+jogo_quinta_fase()
 
 
 

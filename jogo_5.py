@@ -1,137 +1,49 @@
-from random import randint
-from cores import *
-from time import sleep as tempo_de_espera
+from funcoes_jogo_forca import *
+from cores import * 
 
-def jogo_quinta_fase():
-    palavras=["data","result","value","item","index","count","temp","name","while","elif"]
-    lista_palavras_selecionadas=[]
+
+def jogo_quinta_fase(): 
+           
+    palavra_secreta = obter_palavra_aleatoria()
+    letras_permitidas = []
+    vidas = 6
+    renderizar_vida_do_jogador(vidas)
+    renderizar_palavra_secreta(palavra_secreta)
     
-    enforcado=[
-        """
-           -----
-           |   |
-               |
-               |
-               |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-               |
-               |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-           |   |
-               |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-          /|   |
-               |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-          /|\\  |
-               |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-          /|\\  |
-          /    |
-               |
-        ---------
-        """,
-        """
-           -----
-           |   |
-           O   |
-          /|\\  |
-          / \\  |
-               |
-        ---------
-        """
-    ]
 
-    for item in range(5):
-        palavras_selecionadas=randint(0,len(palavras))
-        lista_palavras_selecionadas.append(palavras[palavras_selecionadas-1])
-        palavras.pop(palavras_selecionadas-1)
-
-    palavra=''
-    for item in lista_palavras_selecionadas:
-        print(guarana()+'JOGO DA FORCA!\n')
-
-        # tempo_de_espera(1)
-
-        print('O algorítimo irá sortear 5 palavras, as quais, você tem que acertar ao menos uma.\n')
-
-        # tempo_de_espera(1)
-
-        print('Você terá 7 chances de completar a palavra corretamentet, sem erros.\n')
-
-        # tempo_de_espera(1)
-
-        print('Dando palpites de possíveis letras presentes na palavra.\n'+apaga())
-        jogadas=[]
-        contador=0
-        while True:
-            palavra=item
-            palavra=palavra.split()
-
-            print(palavra)
-            print(f'{enforcado[0]}')
-
-            tamanho=("_"*len(palavra[0]))
-            tamanho_printável=tamanho.center(20)
-            print(tamanho_printável)
-
-            palpite=input('\nQual letra você deseja jogar? ')
-
-            if palpite in palavra[0]:
-                tempo_de_espera(1)
-                local=palavra[0].index(f"{palpite}")
-
-            letras_faltando=tamanho[:local]+palpite+tamanho[local+1:]
-            jogadas.append(letras_faltando)
-            print(jogadas[contador])
-            contador+=1
+    while True:
+        print(palavra_secreta)
+        palpite, tipo = reconhecer_entrada(palavra_secreta)
+        
+        if tipo == 'palavra':
+            if palpite == palavra_secreta:
+                print('PARABÉNS, VOCÊ GANHOU!')
+                break
+            else:
+                vidas -= 1
+                print('VOCÊ ERROU!')
+                renderizar_vida_do_jogador(vidas)
+            if vidas==0:
+                print('VOCÊ PERDEU')
                 
                 
 
-
+        elif tipo == 'char':
+            if palpite[0] in palavra_secreta:
+                letras_permitidas.append(palpite[0])
+                renderizar_palavra_secreta(palavra_secreta, letras_permitidas)
+            else:
+                vidas -= 1
+                print('LETRA NÃO INCLUSA')
+                renderizar_vida_do_jogador(vidas)
             
+            if palavra_secreta_adivinhada(palavra_secreta, letras_permitidas):
+                print('PARABÉNS, VOCÊ VENCEU!')
+                break
 
-
-            
-
-            
-        break
-
+            if vidas==0:
+                print('VOCÊ PERDEU')
+                
         
-
-        
-
-        
-
 
 jogo_quinta_fase()
