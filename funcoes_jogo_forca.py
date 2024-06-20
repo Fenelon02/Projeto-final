@@ -3,7 +3,7 @@
 from random import randint
 from cores import *
 
-def renderizar_vida_do_jogador(vidas=0):
+def renderizar_vida_do_jogador(vidas = 0):
     estados_de_vida = [
         """
            -----
